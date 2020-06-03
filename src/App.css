@@ -1,38 +1,112 @@
-.App {
-  text-align: center;
+html, body {
+  width: 100%; 
+  height: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#root {
+  width: 100%; 
+  height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.wrap {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.wrap-row {
+  display: flex;
+  flex-direction: row;
+  flex-flow: flex-start;
+  height: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* main layout style */
+.header1 {
+  height: 30px;
+  background-color: cadetblue;
+}
+
+.header2 {
+  height: 40px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
+  background-color: white;
+}
+.content {
+  display: flex;
+  /* flex:1 -> flex-glow 1, flex_shrink 1, flex-basis: 0; */
+  flex: 1;  
+}
+
+.left{
+  display: flex;
+  flex: none;
+  width: 300px;
+  flex-direction: column;
+  background-color: #bfbab078;
+}
+
+.flex-item {
+  flex: 1;
+}
+
+.flex-item-no {
+  flex: none;
+}
+
+.main{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.osm{
+  display: flex;
+  flex: 1;
+  overflow: auto;
+}
+.main-grid {
+  display: flex;
+  flex: none;
+  height: 200px;
+  background-color: #bfbab078;
+}
+
+.dropdown_ *{
+  flex: none;
+  font-size: 12px !important;
+  margin-left: 1px;
+}
+
+.dropdown-toggle_ {
+  height: 30px !important;
+}
+
+.font-sm {
+  font-size: 10px !important;
+}
+
+.test-btn-div {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  margin: 1;
+  background: deepskyblue;
+  width: 100%;
+}
+
+.test-btn {
+  margin-left: 2px;
+  height: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.footer {
+  background-color: white;
+  height: 30px;
+  margin-top: auto;
 }
