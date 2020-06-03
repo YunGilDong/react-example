@@ -122,7 +122,8 @@ class App extends Component{
               <div className="osm">
                 osm
               </div>
-              <div className="main-grid">
+              {/* <div className="main-grid"> */}
+              <div className={this.state.bottomVisible ? "main-grid" : "hidden"}>
                 grid
               </div>
 
