@@ -109,4 +109,12 @@ html, body {
   background-color: white;
   height: 30px;
   margin-top: auto;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+}
+
+.foot_time {
+  margin: 0;
 }

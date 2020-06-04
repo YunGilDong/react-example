@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import M_topmenu from './component/M_topmenu';
+import LocalTime from './component/LocalTime';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import PropTypes from 'prop-types';
@@ -84,14 +85,10 @@ class App extends Component{
     let left_stateStyle={
       height:"200px"
     } 
-
-    console.log("left state : "+this.state.leftVisible);
-
-    console.log(leftStyle);
-    leftStyle.width = this.state.leftVisible?"300px":"1px";
-    console.log(leftStyle);
-
     console.log("App render");
+
+    // let str="btn-sm container label.a BB";
+    // console.log(str.split(' ').join(' '));
 
     return (
         <div className="wrap">
@@ -132,7 +129,7 @@ class App extends Component{
           </div>
 
           <div className="footer">
-            footer
+            <LocalTime className="foot_time" time-sm color="info" ></LocalTime>
           </div>
 
         </div>
