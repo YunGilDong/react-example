@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import M_topmenu from './component/M_topmenu';
+import M_botGrid from './component/M_botGrid';
 import LocalTime from './component/LocalTime';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
@@ -120,8 +121,8 @@ class App extends Component{
                 osm
               </div>
               {/* <div className="main-grid"> */}
-              <div className={this.state.bottomVisible ? "main-grid" : "hidden"}>
-                grid
+              <div className={this.state.bottomVisible ? "main-grid" : "hidden"}>                
+                <M_botGrid></M_botGrid>
               </div>
 
             </div>            

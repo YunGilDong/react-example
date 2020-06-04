@@ -70,7 +70,19 @@ html, body {
   display: flex;
   flex: none;
   height: 200px;
-  background-color: #bfbab078;
+  /* background-color: #bfbab078; */
+}
+
+.m-grid-font {  
+  font-size: 12px !important;
+}
+
+.m-grid-header{
+  height: 20px !important;  
+}
+
+.m-grid-body {
+  height: 20px !important;
 }
 
 .dropdown_ *{

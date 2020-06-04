@@ -52,12 +52,12 @@ class LocalTime extends Component
         } = this.props;
 
         let sz = size ? `time-${size}` : false;
-        console.log(sz);
+        //console.log(sz);
 
         const timeColor = `time-color-${color}`;
-        console.log(timeColor);
+        //console.log(timeColor);
 
-        console.log("cls : "+className);
+        //console.log("cls : "+className);
 
         const classes = mapToCssModules(classNames(
             className,               
@@ -67,7 +67,7 @@ class LocalTime extends Component
           ), cssModule);
 
 
-        console.log("classname : "+classes);        
+        //console.log("classname : "+classes);        
 
         let strDateTime = this.getStrDateTime();
         return (        
