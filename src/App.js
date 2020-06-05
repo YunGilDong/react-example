@@ -120,14 +120,14 @@ class App extends Component{
             <div className="main">
               <div className="osm">
                 osm
-                {/* <M_osmMap></M_osmMap> */}
+                <M_osmMap></M_osmMap>
               </div>
               {/* <div className="main-grid"> */}
               <div className={this.state.bottomVisible ? "main-grid" : "hidden"}>                
                 <M_botGrid></M_botGrid>
               </div>
 
-            </div>            
+            </div>             
 
           </div>
 
