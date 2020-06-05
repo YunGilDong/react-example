@@ -6,12 +6,12 @@ import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import '../App.css';
 
 
-//const data01 = gridDataGenerator();
+const data01 = gridDataGenerator();
 
-const data01 = [
-    { id: 1, name: "Item 1", field1: 100 },
-    { id: 2, name: "Item 2", field1: 102 }
-  ];
+// const data01 = [
+//     { id: 1, name: "Item 1", field1: 100 },
+//     { id: 2, name: "Item 2", field1: 102 }
+//   ];
 
 const columns = [{
     dataField: 'id',  
@@ -85,6 +85,7 @@ class M_botGrid extends Component
             headerWrapperClasses
         } = this.props;
 
+        console.log("data : ");
         console.log(data01);
         return(
             // <BootstrapTable headerClasses={headerClasses} bodyClasses={bodyClasses} bordered={bordered} rowClasses={rowClasses} id="grid1" keyField='id' scrollTop={'Top'}  data={ data01 } columns={ columns }/>        

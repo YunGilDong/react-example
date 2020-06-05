@@ -64,12 +64,21 @@ html, body {
 .osm{
   display: flex;
   flex: 1;
-  overflow: auto;
+  overflow: auto;  
 }
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
 .main-grid {
   display: flex;
   flex: none;
   height: 200px;
+  overflow: scroll;
   /* background-color: #bfbab078; */
 }
 

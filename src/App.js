@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import M_topmenu from './component/M_topmenu';
 import M_botGrid from './component/M_botGrid';
 import LocalTime from './component/LocalTime';
+import M_osmMap from './component/M_osmMap';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import PropTypes from 'prop-types';
@@ -119,6 +120,7 @@ class App extends Component{
             <div className="main">
               <div className="osm">
                 osm
+                {/* <M_osmMap></M_osmMap> */}
               </div>
               {/* <div className="main-grid"> */}
               <div className={this.state.bottomVisible ? "main-grid" : "hidden"}>                

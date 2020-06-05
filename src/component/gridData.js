@@ -1,25 +1,24 @@
+
+
+
+
+
+
 export function gridDataGenerator(row=10){
+    //let jArray = new JSONArray();
     let arr = new Array();
+    var obj = {id: "id" , name: "---"
+        , field1: 30, field2: "--" 
+        , field3: 30, field4: "--"
+        , field5: 30, field6: "--"
+        , field7: 30, field8: "--"
+        , field9: 30, field10: "--"};
+      
     for(let i = 0; i< row; i++)
     {
-        arr.push(
-            new Array({
-                id: i,
-                name: "gildong "+i,
-                field1: "field1" +i,
-                field2: "field2"+i,
-                field3: "field3"+i,
-                field4: "field4"+i,
-                field5: "field5"+i,
-                field6: "field6"+i,
-                field7: "field7"+i,
-                field8: "field8"+i,
-                field9: "field9"+i,
-                field10: "field10"+i
-            })
-        );
-        console.log("arr : "+arr);
+        arr.push(obj);
     }
 
+    //console.log(arr);
     return (arr);
 }
