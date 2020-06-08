@@ -71,8 +71,8 @@ class M_botGrid extends Component
         headerClasses: "m-grid-font m-grid-header",
         bodyClasses: "m-grid-font",
         bordered: true,
-        rowClasses: "m-grid-font m-grid-body",
-        headerWrapperClasses: "m-grid-font m-grid-header"
+        rowClasses: "",
+        headerWrapperClasses: ""
 
     }
 
@@ -89,7 +89,11 @@ class M_botGrid extends Component
         console.log(data01);
         return(
             // <BootstrapTable headerClasses={headerClasses} bodyClasses={bodyClasses} bordered={bordered} rowClasses={rowClasses} id="grid1" keyField='id' scrollTop={'Top'}  data={ data01 } columns={ columns }/>        
-            <BootstrapTable classes={headerClasses} headerClasses={headerClasses} headerWrapperClasses={headerWrapperClasses} bodyClasses={bodyClasses} rowClasses={rowClasses} id="grid1" keyField='id' scrollTop={'Top'}  data={ data01 } columns={ columns }/>        
+            <BootstrapTable className="m-grid" headerClasses={headerClasses}  bodyClasses={bodyClasses}
+              id="grid1" keyField='id' scrollTop={'Top'}  
+              data={ data01 } columns={ columns }
+              style={{padding:0}}
+              />
         )
     }
 }

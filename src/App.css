@@ -82,17 +82,20 @@ html, body {
   /* background-color: #bfbab078; */
 }
 
+/* Initialize table style */
+.table th,
+.table td {
+  padding: 0 !important;
+}
+
 .m-grid-font {  
   font-size: 12px !important;
 }
 
-.m-grid-header{
-  height: 20px !important;  
-  padding: 0;
-}
-
-.m-grid-body {
-  height: 20px !important;
+.m-grid-header {
+  color : black;
+  background-color: steelblue;
+  text-align: center;
 }
 
 .dropdown_ *{

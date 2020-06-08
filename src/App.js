@@ -110,6 +110,11 @@ class App extends Component{
             <div className={this.state.leftVisible ? "left" : "hidden"}>
               <div className="flex-item">
                 list
+                {/* <select name="fruit">
+                  <option value="orange">오렌지</option>
+                  <option value="melon">멜론</option>
+                </select> */}
+
               </div>
 
               <div className="flex-item-no" style={left_stateStyle}>
