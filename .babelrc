@@ -1,0 +1,10 @@
+{
+    // Convert es6 and react to es5
+    "presets": [
+      "@babel/preset-env",          // react 환경을 위한 라이브러리
+      "@babel/preset-react"         // jsx를 위한 라이브러리
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"     // class 프로퍼티를 사용할 수 있도록 도와주는 바벨 플러그인
+    ]
+  }
