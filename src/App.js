@@ -119,7 +119,6 @@ class App extends Component{
             </div>
             <div className="main">
               <div className="osm">
-                osm
                 <M_osmMap></M_osmMap>
               </div>
               {/* <div className="main-grid"> */}

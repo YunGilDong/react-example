@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Map, TileLayer, Marker, Popup} from '../../src';
+import M_map from './M_map';
 import '../App.css';
 
 
@@ -7,9 +7,11 @@ class M_osmMap extends Component
 {
     render(){
         return(
-            <div>
+
+            // map
+            <M_map>
                 
-            </div>
+            </M_map>
         )
     }
 }
