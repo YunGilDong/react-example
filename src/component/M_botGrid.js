@@ -2,11 +2,32 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import BootstrapTable from 'react-bootstrap-table-next';
 import {gridDataGenerator} from './gridData';
+import Combobox from 'react-widgets/lib/Combobox';
+import 'react-widgets/dist/css/react-widgets.css';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import '../App.css';
 
-
 const data01 = gridDataGenerator();
+
+function columnFormatter(cell, row, rowIndex, formatExtraData)
+{
+    //console.log(row);
+    let comboArr = new Array();
+
+    Object.keys(row).forEach(function(key){
+      //console.log(row[key]);
+      comboArr.push(row[key]);
+    });
+
+    console.log(comboArr);
+
+    return (
+      <Combobox
+        data={comboArr}
+        defaultValue="---"
+      />
+    )   
+}
 
 // const data01 = [
 //     { id: 1, name: "Item 1", field1: 100 },
@@ -15,7 +36,12 @@ const data01 = gridDataGenerator();
 
 const columns = [{
     dataField: 'id',  
-    text: 'Group ID'  
+    text: 'Group ID',
+    headerStyle: (colum, colIndex) => {
+      return { width: '70px', textAlign: 'center' };
+    }
+
+    
   }, {  
     dataField: 'name',  
     text: 'Group Name'  
@@ -50,6 +76,30 @@ const columns = [{
     dataField: 'field10',  
     text: 'field10'  
   }
+  , {  
+     dataField: 'field11',  
+    text: 'field11',
+    formatter: columnFormatter
+    // formatExtraData: {
+    // dt: data01
+    // }
+  },
+  {
+    dataField: 'field12',
+    text: 'field12',
+    formatter: (cellContent, row) => {
+      let comboArr = new Array();
+      Object.keys(row).forEach(function(key){
+        comboArr.push(row[key]);
+      });
+      return (
+        <Combobox
+          data={comboArr}
+          defaultValue="---"
+        />
+      );
+    }
+  }
 ];
 
 // M_botGrid.propTypes = {
@@ -71,7 +121,7 @@ class M_botGrid extends Component
         headerClasses: "m-grid-font m-grid-header",
         bodyClasses: "m-grid-font",
         bordered: true,
-        rowClasses: "",
+        rowClasses: "m-grid-row",
         headerWrapperClasses: ""
 
     }
@@ -84,12 +134,12 @@ class M_botGrid extends Component
             rowClasses,
             headerWrapperClasses
         } = this.props;
+        
+        console.log('grid render');
 
-        console.log("data : ");
-        console.log(data01);
         return(
             // <BootstrapTable headerClasses={headerClasses} bodyClasses={bodyClasses} bordered={bordered} rowClasses={rowClasses} id="grid1" keyField='id' scrollTop={'Top'}  data={ data01 } columns={ columns }/>        
-            <BootstrapTable className="m-grid" headerClasses={headerClasses}  bodyClasses={bodyClasses}
+            <BootstrapTable className="m-grid" headerClasses={headerClasses}  bodyClasses={bodyClasses} rowClasses={rowClasses}
               id="grid1" keyField='id' scrollTop={'Top'}  
               data={ data01 } columns={ columns }
               style={{padding:0}}

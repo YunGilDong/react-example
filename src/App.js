@@ -3,6 +3,7 @@ import M_topmenu from './component/M_topmenu';
 import M_botGrid from './component/M_botGrid';
 import LocalTime from './component/LocalTime';
 import M_osmMap from './component/M_osmMap';
+import M_combo from './component/M_combo';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import PropTypes from 'prop-types';
@@ -110,10 +111,7 @@ class App extends Component{
             <div className={this.state.leftVisible ? "left" : "hidden"}>
               <div className="flex-item">
                 list
-                {/* <select name="fruit">
-                  <option value="orange">오렌지</option>
-                  <option value="melon">멜론</option>
-                </select> */}
+                <M_combo />
 
               </div>
 

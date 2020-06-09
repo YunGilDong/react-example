@@ -98,6 +98,16 @@ html, body {
   text-align: center;
 }
 
+.m-grid-combo {
+  color : blue;
+  z-index : 3;
+}
+
+/* .m-grid-row {
+  color : blue;
+  z-index : 3;
+} */
+
 .dropdown_ *{
   flex: none;
   font-size: 12px !important;
