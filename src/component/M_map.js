@@ -7,10 +7,10 @@ import MapGL from 'react-map-gl';
 
 
 const MAPBOX_TOKEN = 'pk.eyJ1IjoieXVuZ2lsZG9uZyIsImEiOiJjazdibHh2cG0wMzBlM2ZwOWppMXJ1cXFhIn0.Q-AQlltldjnf3yd1mdDXrA'; // Set your mapbox token here
-const mapurl1 = 'http://localhost:8001/styles/klokantech-basic/style.json';
-const mapurl2 = 'http://localhost:8001/styles/dark-matter/style.json';
+const mapurl1 = 'http://192.168.1.51:8001/styles/klokantech-basic/style.json';
+const mapurl2 = 'http://192.168.1.51:8001/styles/dark-matter/style.json';
 //const mapurl ='mapbox://styles/mapbox/dark-v9';
-class M_map extends Component {
+class M_map extends Component { 
   constructor(props) {
     super(props);
     this.state = {

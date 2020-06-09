@@ -3,7 +3,7 @@
 
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+//const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -30,21 +30,50 @@ module.exports = {
           }
         ]
       },
+      // {
+      //   // css build option & loader
+      //   test: /\.css$/,
+      //   use: [MiniCssExtractPlugin.loader, 'css-loader']
+      // },    
+
       {
-        // css build option & loader
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
+        test: /\.css$/i,
+        use: [
+          'style-loader',
+          { loader: 'css-loader', options: { sourceMap: true } },
+        ],
       },
-    ]
+
+      // react-widget url loader
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+      },
+      
+      // react-widget loader
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
+
+      // react-widget loader
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" },
+    ],
+        
   },
   plugins: [
     new HtmlWebPackPlugin({     // output에 있는 bundle.js를 자동을 import
       template: './public/index.html', // public/index.html 파일을 읽는다.
       filename: 'index.html' // output으로 출력할 파일은 index.html 이다.
-    }),    
-    new MiniCssExtractPlugin({        
-        // css output file option
-        filename: 'style.css'
-      })
+    })
+    // ,    
+    // new MiniCssExtractPlugin({        
+    //     // css output file option
+    //     filename: 'style.css'
+    //   })
   ]
 };
