@@ -4,6 +4,7 @@ import M_botGrid from './component/M_botGrid';
 import LocalTime from './component/LocalTime';
 import M_osmMap from './component/M_osmMap';
 import M_combo from './component/M_combo';
+import M_table_test from './component/M_table_test';
 import 'bootstrap/dist/css/bootstrap.css';
 import SplitPane, { Pane } from 'react-split-pane';
 import './App.css';
@@ -27,13 +28,15 @@ class App extends Component{
     this.handleDragStart = this.handleDragStart.bind(this);
     this.handleDragEnd = this.handleDragEnd.bind(this);
     this.handleDrag = this.handleDrag.bind(this);
+
+    this.gridRef = React.createRef();        
   }  
 
   state = {
     layoutType: 1,
     leftVisible: true,
     bottomVisible: true,
-    splitPaneWidth: undefined,
+    splitPaneRate: undefined,
     dragging: false,
   }
 
@@ -43,13 +46,10 @@ class App extends Component{
     const{layoutType} = this.state;
     if(layoutType === nextState.layoutType)
     {
-      console.log("same!" + layoutType + ", "+ nextState.layoutType);
       return (true);
     }
     else{
-      console.log("not same!" + layoutType + ", "+ nextState.layoutType);
       // call layout handle function
-
       return (true);
     }
   }
@@ -94,29 +94,35 @@ class App extends Component{
   }
 
   handleDragEnd() {    
-    const {dragging, splitPaneWidth} = this.state;
+    const {dragging, splitPaneRate} = this.state;
     this.setState({
       dragging: false,
     });
     setTimeout(() => {
-      this.setState({ splitPaneWidth: undefined });
+      this.setState({ splitPaneRate: undefined });
     }, 0);
 
   }
 
   handleDrag(width) {
     console.log(width);
-    const splitPaneWidth = this.state.splitPaneWidth;
+    const splitPaneRate = this.state.splitPaneRate;
     // if (width >= 300 && width <= 400) {
-    //   this.setState({ splitPaneWidth: 300 });
+    //   this.setState({ splitPaneRate: 300 });
     // } else if (width > 400 && width <= 500) {
-    //   this.setState({ splitPaneWidth: 500 });
+    //   this.setState({ splitPaneRate: 500 });
     // } else {
-    //   this.setState({ splitPaneWidth: undefined });
+    //   this.setState({ splitPaneRate: undefined });
     // }
 
-    //this.setState({ splitPaneWidth: width });
-    console.log(this.state.splitPaneWidth);
+    
+    //console.log(`sp width : ${this.state.splitPaneRate}`);
+
+    console.log(`ref wd : ${this.gridRef.current.clientWidth}`)
+    console.log(`window wd : ${window.innerWidth}`);
+    let gridPanRate = this.gridRef.current.clientWidth / window.innerWidth;
+    this.setState({ splitPaneRate: gridPanRate });    
+    console.log(`rate : ${gridPanRate}`);
   }
 
   render(){
@@ -127,10 +133,15 @@ class App extends Component{
     let left_stateStyle={
       height:"200px"
     } 
+    let splitPanStyle = {
+      position: "static"
+    }
     console.log("App render");
 
     // let str="btn-sm container label.a BB";
     // console.log(str.split(' ').join(' '));
+
+    //let gridWidth = document.getElementById('grid').clientWidth;
 
     return (
         <div className="wrap">
@@ -147,37 +158,41 @@ class App extends Component{
 
           <div className="content">          
 
-            <SplitPane split="vertical" minSize={300} defaultSize={300}
-              onChange={this.handleDrag}
-              onDragStarted={this.handleDragStart}
-              onDragFinished={this.handleDragEnd}>
+              <SplitPane split="vertical" minSize={300} maxSize={1000} defaultSize={300}
+                onChange={this.handleDrag}
+                onDragStarted={this.handleDragStart}
+                onDragFinished={this.handleDragEnd}
+                style={splitPanStyle}>
 
-              <div className={this.state.leftVisible ? "left" : "hidden"}>
-                <div className="flex-item">
-                  list
-                  <M_combo />
-                </div>
+                <div className={this.state.leftVisible ? "left" : "hidden"}>
+                  <div className="flex-item">
+                    list
+                    <M_combo />
+                  </div>
 
-                <div className="flex-item-no" style={left_stateStyle}>
-                  state
-                </div>
-              </div>                        
-              
-              <div className="main">
-                <div className="osm">
-                  <M_osmMap></M_osmMap>
-                </div>
+                  <div className="flex-item-no" style={left_stateStyle}>
+                    state
+                  </div>
+                </div>                        
                 
-                <div className={this.state.bottomVisible ? "main-grid" : "hidden"}>                
-                  <M_botGrid
-                    paneWidth={this.state.splitPaneWidth}
-                  >                  
-                  </M_botGrid>
-                </div>
-              </div>                  
+                <div className="main">
+                  <div className="osm">
+                    <M_osmMap></M_osmMap>
+                  </div>
+                  
+                  <div id="grid" className={this.state.bottomVisible ? "main-grid" : "hidden"} ref={this.gridRef}>
+                    {/* <M_botGrid
+                      splitPaneRate={this.state.splitPaneRate}
+                    >                  
+                    </M_botGrid> */}
+                    <M_table_test></M_table_test>
+                  </div>
+                </div>                  
 
-            </SplitPane>
+              </SplitPane>
 
+
+              
           </div>
           
 
