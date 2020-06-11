@@ -80,8 +80,8 @@ html, body {
 .main-grid {
   display: flex;
   flex: none;
-  height: 200px;
-  overflow: scroll;
+  height: 150px;
+  /* overflow: scroll; */
   /* background-color: #bfbab078; */
 }
 
@@ -106,10 +106,10 @@ html, body {
   z-index : 3;
 }
 
-/* .m-grid-row {
-  color : blue;
-  z-index : 3;
-} */
+.m-grid-row {
+  overflow: scroll;
+
+}
 
 .dropdown_ *{
   flex: none;

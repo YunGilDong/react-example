@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import { Combobox, DropdownList } from 'react-widgets';
+import Badge_test from './Badge_test';
+
 import 'react-widgets/dist/css/react-widgets.css';
+
+
 
 import '../App.css';
 
@@ -10,10 +14,15 @@ class M_combo extends Component
         let comboDt = ["A", "B", "C"];
         return(
 
-            <Combobox
-                data={comboDt}
-                defaultValue="---"
-            />
+            <div>
+                    
+                {/* <Badge_test /> */}
+                <Combobox
+                    data={comboDt}
+                    defaultValue="---"
+                />
+
+            </div>
         )
     }
 }

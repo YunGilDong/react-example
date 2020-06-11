@@ -12,20 +12,28 @@ const products = [
 
 const columns = [{
     dataField: 'id',
-    text: 'Product ID',
+    text: 'Group Id',
     hidden: false
   }, {
     dataField: 'name',
-    text: 'Product Name',
+    text: '운영 시각',
     hidden: false
   }, {
     dataField: 'price',
-    text: 'Product Price',
+    text: '제어모드',
     hidden: false
   }, {
     dataField: 'hidden',
-    text: 'hidden',
-    hidden: true
+    text: '주기',
+    hidden: false
+  }, {
+    dataField: 'hidden',
+    text: '옵셋',
+    hidden: false
+  }, {
+    dataField: 'hidden',
+    text: '스플릿',
+    hidden: false
   }
 ];
   
@@ -98,16 +106,24 @@ const columns = [{
   
     render() {
       return (
-        <div>
+        <div className="wrap-row">
           {/* <BootstrapTable keyField="id" data={ products } columns={ this.state.columns } /> */}
 
+          <div className="flex-item">
           <BootstrapTable className="m-grid" headerClasses={this.props.headerClasses}  bodyClasses={this.props.bodyClasses} rowClasses={this.props.rowClasses}
               id="grid1" keyField='id' scrollTop={'Top'}  
               data={ products } columns={this.state.columns}
               style={{padding:0}}
               />
+          </div>
 
-          <button onClick={ this.changeHidden }>change price column visibility</button>
+          <div className="flex-item" style={{background:'gray'}}>
+
+            event
+          </div>
+
+
+          {/* <button onClick={ this.changeHidden }>change price column visibility</button> */}
         </div>
       );
     }
