@@ -6,20 +6,28 @@ import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import '../App.css';
 const products = [
     { id: 1, name: "Item 1", price: 100 },
-    { id: 2, name: "Item 2", price: 102 }
+    { id: 2, name: "Item 2", price: 101 },
+    { id: 3, name: "Item 3", price: 102 }
   ];
 
 const columns = [{
     dataField: 'id',
-    text: 'Product ID'
+    text: 'Product ID',
+    hidden: false
   }, {
     dataField: 'name',
-    text: 'Product Name'
+    text: 'Product Name',
+    hidden: false
   }, {
     dataField: 'price',
     text: 'Product Price',
+    hidden: false
+  }, {
+    dataField: 'hidden',
+    text: 'hidden',
     hidden: true
-  }];
+  }
+];
   
   class M_table_test extends Component {
     state = { columns }
@@ -34,6 +42,8 @@ const columns = [{
     }
   
     changeHidden = () => {
+      console.log('changeHidden');
+      const {columns} = this.state.columns;
       const newColumns = this.state.columns.map((column) => {
         if (column.dataField !== 'price') return column;
         return {
@@ -42,6 +52,48 @@ const columns = [{
         };
       });
       this.setState({ columns: newColumns });
+    }
+
+    columnToggle = () => {
+      console.log("columnToogle");      
+    }
+
+    setColumnVisible = (col, visible) => {
+      const {columns} = this.state.columns;
+      const newColumns = this.state.columns.map((column) => {
+        return column;
+      });
+      
+      newColumns[col]['hidden'] = visible;      
+      this.setState({ columns: newColumns });
+
+      console.log(columns);
+    }
+
+    componentWillReceiveProps(nextProps) {
+      // this.props 는 아직 바뀌지 않은 상태
+      
+      // console.log(`prev props: ${this.props.gridPaneRate}`);
+      // console.log(`next props: ${nextProps.gridPaneRate}`);
+
+      if(nextProps.gridPaneRate===undefined)  return;
+
+      let gridPanRate = nextProps.gridPaneRate*100;
+      if(gridPanRate < 60)
+      {
+        // 3 col unvisible
+        this.setColumnVisible(2, true);
+      }
+      else if(gridPanRate < 70)
+      {
+        this.setColumnVisible(1, true);
+        this.setColumnVisible(2, false);
+      }
+      else
+      {
+        this.setColumnVisible(1, false);
+        this.setColumnVisible(2, false);
+      }
     }
   
     render() {

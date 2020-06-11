@@ -36,7 +36,7 @@ class App extends Component{
     layoutType: 1,
     leftVisible: true,
     bottomVisible: true,
-    splitPaneRate: undefined,
+    gridPaneRate: undefined,
     dragging: false,
   }
 
@@ -94,35 +94,27 @@ class App extends Component{
   }
 
   handleDragEnd() {    
-    const {dragging, splitPaneRate} = this.state;
+    const {dragging, gridPaneRate} = this.state;
     this.setState({
       dragging: false,
     });
     setTimeout(() => {
-      this.setState({ splitPaneRate: undefined });
+      this.setState({ gridPaneRate: undefined });
     }, 0);
 
   }
 
-  handleDrag(width) {
-    console.log(width);
-    const splitPaneRate = this.state.splitPaneRate;
-    // if (width >= 300 && width <= 400) {
-    //   this.setState({ splitPaneRate: 300 });
-    // } else if (width > 400 && width <= 500) {
-    //   this.setState({ splitPaneRate: 500 });
-    // } else {
-    //   this.setState({ splitPaneRate: undefined });
-    // }
+  handleDrag(width) {    
+    const gridPaneRate = this.state.gridPaneRate;
 
+    let panRate = this.gridRef.current.clientWidth / window.innerWidth;
+    this.setState({ gridPaneRate: panRate });
     
-    //console.log(`sp width : ${this.state.splitPaneRate}`);
+  }
 
-    console.log(`ref wd : ${this.gridRef.current.clientWidth}`)
-    console.log(`window wd : ${window.innerWidth}`);
-    let gridPanRate = this.gridRef.current.clientWidth / window.innerWidth;
-    this.setState({ splitPaneRate: gridPanRate });    
-    console.log(`rate : ${gridPanRate}`);
+  callM_table_test_f = () =>{
+    M_table_test.columnToggle();
+
   }
 
   render(){
@@ -182,10 +174,10 @@ class App extends Component{
                   
                   <div id="grid" className={this.state.bottomVisible ? "main-grid" : "hidden"} ref={this.gridRef}>
                     {/* <M_botGrid
-                      splitPaneRate={this.state.splitPaneRate}
+                      gridPaneRate={this.state.gridPaneRate}
                     >                  
                     </M_botGrid> */}
-                    <M_table_test></M_table_test>
+                    <M_table_test gridPaneRate={this.state.gridPaneRate}></M_table_test>
                   </div>
                 </div>                  
 
